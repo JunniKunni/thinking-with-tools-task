@@ -1,0 +1,14 @@
+{% extends 'CarData/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<img src="{% static 'images/global_map.jpg' %}" alt="worldmap" usemap="#worldmap"/>
+<map name="worldmap">
+
+    <area shape="rect" coords="165,120,260,150" alt="Canada" href="{% url 'CarData:detail' 'Canada' %}">
+    <area shape="rect" coords="1030,100,1120,130" alt="Russia" href="{% url 'CarData:detail' 'Russia' %}">
+    <area shape="rect" coords="1110,250,1180,280" alt="China" href="{% url 'CarData:detail' 'China' %}">
+    <area shape="rect" coords="1370,240,1450,270" alt="Japan" href="{% url 'CarData:detail' 'Japan' %}">
+
+</map>
+{% endblock %}

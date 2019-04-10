@@ -1,0 +1,24 @@
+{% extends 'CarData/base.html' %}
+
+{% block content %}
+
+<h1>{{ country }}</h1>
+
+{% if car_details %}
+{% for key, value in car_details.items %}
+    {% if value %}
+    <h3>Car Model : {{ key }}</h3>
+    <h4>Sale Price Statistics :</h4>
+    <p>Min : {{ value.1 }} </p>
+    <p>Max : {{ value.2 }} </p>
+    <p>Mean : {{ value.0 }} </p>
+    <p>Count : {{ value.3 }} </p>
+    <br>
+    <br>
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+
+
+{% endblock %}
