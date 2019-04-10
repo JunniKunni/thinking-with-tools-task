@@ -7,15 +7,18 @@ import sys
 from CarData.models import CarTransaction, Country # Import your model here
 from django.core.management.base import BaseCommand
 
-IMPORT_URL = 'https://my.api.mockaroo.com/jkim.json?key=e6ac1da0&countries='  # URL to import from
+# URL to import from with field
+IMPORT_URL = 'https://my.api.mockaroo.com/jkim.json?key=e6ac1da0&countries='
 
 class Command(BaseCommand):
 
+    # adding user input for countries
     def add_arguments(self, parser):
         # Positional arguments
         parser.add_argument('countries_inp', type=str)
 
 
+    # To create an instance of a transaction
     def import_cartransaction(self, data):
 
         car_id = data.get('id', None)
@@ -53,16 +56,14 @@ class Command(BaseCommand):
             print(msg)
 
 
+    # Makes the GET request to the api
     def handle(self, *args, **options):
-        """
-        Makes a GET request to the API.
-        """
         headers = {'Content-Type': 'application/json'}
         response = requests.get(
             url=IMPORT_URL + options['countries_inp'],
             headers=headers,
         )
-        print(IMPORT_URL + options['countries_inp'])
+
         response.raise_for_status()
         data = response.json()
         for data_object in data:
