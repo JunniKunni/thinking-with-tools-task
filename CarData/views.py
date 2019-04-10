@@ -31,7 +31,7 @@ def details(request, import_country):
         else:
             curr_car = car_details[transaction.car_model]
             # Calculating new Average
-            average = ((curr_car[0] * curr_car[-1]) + transaction.sale_price) / curr_car[-1]
+            average = ((curr_car[0] * curr_car[-1]) + transaction.sale_price) / ( curr_car[-1]+1 )
             curr_car[0] = average
 
             # Checking for min
